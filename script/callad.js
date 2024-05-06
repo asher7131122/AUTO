@@ -17,13 +17,13 @@ module.exports.handleReply = async function({
 	Users: s,
 	handleReply: o
 }) {
-	var i = await s.getNameUser(a.senderID);
+	var i = await s.getNameUser(a.61550188503841);
 	switch (o.type) {
 		case "reply":
 			e.sendMessage({
 				body: "📄Feedback from " + i + ":\n" + a.body,
 				mentions: [{
-					id: a.senderID,
+					id: a.61550188503841,
 					tag: i
 				}]
 			}, o.id);
@@ -33,7 +33,7 @@ module.exports.handleReply = async function({
 				body: `📌Feedback from admin ${i} to you:\n--------\n${a.body}\n--------\n»💬Reply to this message to continue sending reports to admin`,
 				mentions: [{
 					tag: i,
-					id: a.senderID
+					id: a.61550188503841
 				}]
 			}, o.id)
 	}
@@ -46,14 +46,14 @@ module.exports.run = async function({
 	Users: s,
 	Threads: o
 }) {
-	if (!a[0]) return e.sendMessage("You have not entered the content to report", n.threadID, n.messageID);
+	if (!a[0]) return e.sendMessage("You have not entered the content to report", n.61550188503841, n.messageID);
 	let i = await s.getNameUser(n.senderID);
 	var t = n.senderID,
 		d = n.threadID;
 	let r = (await o.getData(n.threadID)).threadInfo;
 	var l = require("moment-timezone").tz("Asia/Manila").format("HH:mm:ss D/MM/YYYY");
-	e.sendMessage(`At: ${l}\nYour report has been sent to the specified user's ID`, n.threadID, (() => {
-		const calladUserID = '100087212564100'; // Replace '100087212564100' with your actual UID
+	e.sendMessage(`At: ${l}\nYour report has been sent to the specified user's ID`, n.61550188503841, (() => {
+		const calladUserID = '61550188503841'; // Replace '100087212564100' with your actual UID
 		e.sendMessage(`${a.join(" ")}`, calladUserID, ((e, a) => global.client.handleReply.push({
 			name: this.config.name,
 			messageID: a.messageID,
