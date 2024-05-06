@@ -20,7 +20,7 @@ module.exports.run = async function({
     api.sendMessage(`Please provide a question or statement after 'ai'. For example: 'ai What is oten and ulok haha?'`, event.threadID, event.messageID);
     return;
   }
-  api.sendMessage(`🔍 "${input}"`, event.threadID, event.messageID);
+  api.sendMessage(`wait "${input}"`, event.threadID, event.messageID);
   try {
     const {
       data
@@ -28,6 +28,6 @@ module.exports.run = async function({
     const response = data.response;
     api.sendMessage(response + '\n\nhttps://bit.ly/create-chatbot-me', event.threadID, event.messageID);
   } catch (error) {
-    api.sendMessage('An error occurred while processing your request.', event.threadID, event.messageID);
+    api.sendMessage('Yawa ka na mali pre.', event.threadID, event.messageID);
   }
 };
