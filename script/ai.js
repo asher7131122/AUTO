@@ -17,10 +17,10 @@ module.exports.run = async function({
 }) {
   const input = args.join(' ');
   if (!input) {
-    api.sendMessage(`Please provide a question or statement after 'ai'. For example: 'ai What is oten and ulok haha?'`, event.threadID, event.messageID);
+    api.sendMessage(`putangina mo lagyan mo question example: ai 5 little monkey jumping on the bed?'`, event.threadID, event.messageID);
     return;
   }
-  api.sendMessage(`wait "${input}"`, event.threadID, event.messageID);
+  api.sendMessage(`wait boss "${input}"`, event.threadID, event.messageID);
   try {
     const {
       data
