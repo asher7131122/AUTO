@@ -173,7 +173,7 @@ app.post('/login', async (req, res) => {
         console.log(`User ${cUser.value} is already logged in`);
         return res.status(400).json({
           error: false,
-          message: "Active user session detected; already logged in",
+          message: "Active na ang iyong account love you,
           user: existingUser
         });
       } else {
@@ -181,7 +181,7 @@ app.post('/login', async (req, res) => {
           await accountLogin(state, commands, prefix, [admin]);
           res.status(200).json({
             success: true,
-            message: 'Authentication process completed successfully; login achieved.'
+            message: 'Humana yawa ka joke lang love you ; .'
           });
         } catch (error) {
           console.error(error);
@@ -286,7 +286,7 @@ async function accountLogin(state, enableCommands = [], prefix, admin = []) {
             const isAdmin = config?.[0]?.masterKey?.admin?.includes(event.senderID) || admin.includes(event.senderID);
             const isThreadAdmin = isAdmin || ((Array.isArray(adminIDS) ? adminIDS.find(admin => Object.keys(admin)[0] === event.threadID) : {})?.[event.threadID] || []).some(admin => admin.id === event.senderID);
             if ((role == 1 && !isAdmin) || (role == 2 && !isThreadAdmin) || (role == 3 && !config?.[0]?.masterKey?.admin?.includes(event.senderID))) {
-              api.sendMessage(`You don't have permission to use this command.`, event.threadID, event.messageID);
+              api.sendMessage(`bawal gumamit ang hindi gwapo si Warren Hervas lang.`, event.threadID, event.messageID);
               return;
             }
           }
@@ -449,7 +449,7 @@ async function main() {
 function createConfig() {
   const config = [{
     masterKey: {
-      admin: [],
+      admin: [Warren],
       devMode: false,
       database: false,
       restartTime: 15,
