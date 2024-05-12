@@ -16,7 +16,7 @@ module.exports.handleEvent = async ({
       if (error) {
         api.sendMessage(`Nag leave si ${name} sa group guys🥺!`, event.threadID);
       } else {
-        api.sendMessage(`add kita ulit, ${name} bobo sabing bawal mag leave!`, event.threadID);
+        api.sendMessage(`add kita, ${name} love kita eh!`, event.threadID);
       }
     });
   }
