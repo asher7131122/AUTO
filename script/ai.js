@@ -1,33 +1,32 @@
 const axios = require('axios');
+
 module.exports.config = {
-  name: 'ai',
-  version: '1.0.0',
-  role: 0,
-  hasPrefix: false,
-  aliases: ['gpt', 'openai'],
-  description: "An AI command powered by GPT-4",
-  usage: "Ai [promot]",
-  credits: 'Developer',
-  cooldown: 3,
+    name: "ai",
+    version: "1.0.0",
+    hasPermssion: 0,
+    credits: "Jay", // Changed the credits to "Jay"
+    description: "EDUCATIONAL",
+    usePrefix: true,
+    commandCategory: "AI",
+    usages: "[question]",
+    cooldowns: 10
 };
-module.exports.run = async function({
-  api,
-  event,
-  args
-}) {
-  const input = args.join(' ');
-  if (!input) {
-    api.sendMessage(`i love you baby ${name}\ ano gawa mo baby?'`, event.threadID, event.messageID);
-    return;
-  }
-  api.sendMessage(`wait love "${input}"`, event.threadID, event.messageID);
-  try {
-    const {
-      data
-    } = await axios.get(`https://soyeon-gpt4.onrender.com/api?prompt=${encodeURIComponent(input)}`);
-    const response = data.response;
-    api.sendMessage(response + '\n\nhttps://auto-4ltq.onrender.com', event.threadID, event.messageID);
-  } catch (error) {
-    api.sendMessage('love di ko hanap ☹️🥺.', event.threadID, event.messageID);
-  }
+
+module.exports.run = async function ({ api, event, args }) {
+    const question = args.join(' ');
+    const apiUrl = `https://markdevsapi-2014427ac33a.herokuapp.com/gpt4?ask=${encodeURIComponent(question)}`;
+
+    if (!question) return api.sendMessage("send question babe balik na tayo.", event.threadID, event.messageID);
+
+    try {
+        api.sendMessage(" nag type pa si Warren pogi...", event.threadID, event.messageID);
+
+        const response = await axios.get(apiUrl);
+        const answer = response.data.answer;
+
+        api.sendMessage(`𝗔𝗜 🚀\n━━━━━━━━━━━━━━━━━━━\n𝗤𝘂𝗲𝘀𝘁𝗶𝗼𝗻: ${question}\n━━━━━━━━━━━━━━━━━━━\n𝗔𝗻𝘀𝘄𝗲𝗿: ${answer}\n\nthis bot was create by Warren Hervas pogi\n𝓒𝓻𝓮𝓭𝓲𝓽𝓼: https://www.facebook.com/profile.php?id=61550188503841`, event.threadID, event.messageID); // Added the FB link
+    } catch (error) {
+        console.error(error);
+        api.sendMessage("hindi ka nya lab sabi ni Warren.", event.threadID);
+    }
 };
